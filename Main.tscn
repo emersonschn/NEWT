@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dku30sl8r48vp"]
+
+[ext_resource type="Script" uid="uid://1mkxr5pspyqd" path="res://Main.gd" id="1_glv2v"]
+
+[node name="Control" type="Control" unique_id=389180202]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_glv2v")
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=216497560]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 1.0
+offset_right = 164.0
+offset_bottom = 52.0
+text = "Score : 0"
+
+[node name="ClickButton" type="Button" parent="." unique_id=629059334]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 142.0
+offset_right = 155.0
+offset_bottom = 221.0
+text = "CLICK!"
+
+[node name="UpgradeButton" type="Button" parent="." unique_id=921550882]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 143.0
+offset_right = 368.0
+offset_bottom = 219.0
+text = "Upgrade (+1 per click)"
+
+[node name="UpgradeButton1" type="Button" parent="." unique_id=2131917735]
+layout_mode = 0
+offset_left = 219.0
+offset_top = 232.0
+offset_right = 400.0
+offset_bottom = 307.0
+text = "Upgrade (+3 per click)"

@@ -1,6 +1,9 @@
 extends Control
 
 @onready var score_label: Label = $ScoreLabel
+@onready var PerClickLabel: Label = $PerClickLabel
+@onready var UpgradeCostLabel: Label = $UpgradeCostLabel
+@onready var UpgradeCostLabel1: Label = $UpgradeCostLabel1
 @onready var click_button: Button = $ClickButton
 @onready var upgrade_button: Button = $UpgradeButton
 @onready var upgrade_button1: Button = $UpgradeButton1
@@ -36,6 +39,9 @@ func _on_upgrade_pressed1() -> void:
 		update_ui()
 
 func update_ui() -> void:
-	score_label.text = "Score: %d\nPer click: %d\nUpgrade cost: %d\n Upgrade1 cost: %d" % [score, points_per_click, upgrade_cost, upgrade_cost1] 
+	score_label.text = "Score: %d" % [score]
+	PerClickLabel.text = "Per Click: %d" %[points_per_click]
+	UpgradeCostLabel.text = "Upgrade Cost: %d" % [upgrade_cost]
+	UpgradeCostLabel1.text = "Upgrade Cost: %d" % [upgrade_cost1]
 	upgrade_button.disabled = score < upgrade_cost
 	upgrade_button1.disabled = score < upgrade_cost1

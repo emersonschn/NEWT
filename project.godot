@@ -10,13 +10,10 @@ config_version=5
 
 [application]
 
-config/name="NEWT"
+config/name="simpleClicker"
+run/main_scene="uid://dku30sl8r48vp"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
-
-[dotnet]
-
-project/assembly_name="NEWT"
 
 [physics]
 

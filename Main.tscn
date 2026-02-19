@@ -13,32 +13,60 @@ script = ExtResource("1_glv2v")
 
 [node name="ScoreLabel" type="Label" parent="." unique_id=216497560]
 layout_mode = 0
-offset_left = 23.0
-offset_top = 1.0
-offset_right = 164.0
-offset_bottom = 52.0
+offset_left = 14.0
+offset_top = 267.0
+offset_right = 155.0
+offset_bottom = 318.0
 text = "Score : 0"
 
 [node name="ClickButton" type="Button" parent="." unique_id=629059334]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 142.0
-offset_right = 155.0
-offset_bottom = 221.0
+offset_left = 11.0
+offset_top = 295.0
+offset_right = 165.0
+offset_bottom = 374.0
 text = "CLICK!"
 
 [node name="UpgradeButton" type="Button" parent="." unique_id=921550882]
 layout_mode = 0
-offset_left = 218.0
-offset_top = 143.0
-offset_right = 368.0
-offset_bottom = 219.0
+offset_left = 422.0
+offset_top = 338.0
+offset_right = 598.0
+offset_bottom = 414.0
 text = "Upgrade (+1 per click)"
 
 [node name="UpgradeButton1" type="Button" parent="." unique_id=2131917735]
 layout_mode = 0
-offset_left = 219.0
-offset_top = 232.0
-offset_right = 400.0
-offset_bottom = 307.0
+offset_left = 421.0
+offset_top = 419.0
+offset_right = 602.0
+offset_bottom = 494.0
 text = "Upgrade (+3 per click)"
+
+[node name="PerClickLabel" type="Label" parent="." unique_id=1622453654]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 374.0
+offset_right = 157.0
+offset_bottom = 419.0
+text = "Per click: "
+
+[node name="UpgradeCostLabel" type="Label" parent="." unique_id=587303076]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.017
+offset_left = 608.0
+offset_top = 347.0
+offset_right = 734.416
+offset_bottom = 399.0
+text = "Upgrade Cost: "
+
+[node name="UpgradeCostLabel1" type="Label" parent="." unique_id=573725851]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.017
+offset_left = 608.0
+offset_top = 439.0
+offset_right = 734.416
+offset_bottom = 488.0
+text = "Upgrade Cost: "

@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c5qj02o0w66r4" path="res://Resources/clockIcon.png" id="7_5vw27"]
 [ext_resource type="Texture2D" uid="uid://b85v6lf8fd37j" path="res://Resources/sun.png" id="9_kek77"]
 [ext_resource type="Texture2D" uid="uid://dpvhlevrjrjh1" path="res://Resources/sundial.png" id="10_4c57u"]
+[ext_resource type="Texture2D" uid="uid://dst4ws40wt6gc" path="res://Resources/waterclock.png" id="11_efxa6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
 albedo_texture = ExtResource("1_0xm2m")
@@ -189,6 +190,38 @@ text = "                                             Sun Dial"
 [node name="BuyButton" type="Button" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1871095058]
 layout_mode = 2
 text = "Purchase: +10second per click"
+
+[node name="WaterClockUpgrade" type="PanelContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1600010224]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade" unique_id=1485857975]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade/MarginContainer" unique_id=1017355845]
+layout_mode = 2
+theme = SubResource("Theme_efxa6")
+
+[node name="WaterClockIcon" type="Sprite2D" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade/MarginContainer/HBoxContainer" unique_id=1123555782]
+position = Vector2(29.2, 25.7)
+scale = Vector2(0.062109377, 0.05527344)
+texture = ExtResource("11_efxa6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade/MarginContainer/HBoxContainer" unique_id=1536128813]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=549839508]
+layout_mode = 2
+text = "                                    "
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1595369372]
+layout_mode = 2
+text = "                                             Water Clock"
+
+[node name="BuyButton" type="Button" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=990429943]
+layout_mode = 2
+text = "Purchase: +45second per click"
 
 [node name="UpgradesPanelLabel" type="Label" parent="UI" unique_id=1233085286]
 anchors_preset = 1

@@ -1,47 +1,112 @@
-extends Control
+extends Node2D
 
-@onready var score_label: Label = $ScoreLabel
-@onready var PerClickLabel: Label = $PerClickLabel
-@onready var UpgradeCostLabel: Label = $UpgradeCostLabel
-@onready var UpgradeCostLabel1: Label = $UpgradeCostLabel1
-@onready var click_button: Button = $ClickButton
-@onready var upgrade_button: Button = $UpgradeButton
-@onready var upgrade_button1: Button = $UpgradeButton1
+# currency / score
+var total_time: int = 0
 
-var score: int = 0
-var points_per_click: int = 1
-var upgrade_cost: int = 10
-var upgrade_cost1: int = 100
+# time per click
+var click: int = 1
+
+# upgrade data sun
+const CLICK_SUN_UPGRADE := "Click Power +1second"
+const CLICK_SUN_UPGRADE_BASE_COST := 60
+const CLICK_SUN_UPGRADE_GROWTH := 1.15
+var click_sun_upgrade_level: int = 0
+
+# upgrade data sundial
+const CLICK_SUNDIAL_UPGRADE := "CLick Power +10second"
+const CLICK_SUNDIAL_UPGRADE_BASE_COST := 600
+const CLICK_SUNDIAL_UPGRADE_GROWTH := 1.15
+var click_sundial_upgrade_level: int = 0
+
+# begin
+@onready var time_label: Label = $TimeCountLabel
+@onready var clock_button: TextureButton = $ClockButton
+@onready var rate_label: Label = $TimePerSecLabel
+
+# sun upgrade
+@onready var sun_title: Label = $UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer/HBoxContainer/VBoxContainer/Title
+@onready var sun_purchase_button: Button = $UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer/HBoxContainer/VBoxContainer/BuyButton
+
+# sundial upgrade
+@onready var sundial_title: Label = $UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer/HBoxContainer/VBoxContainer/Title
+@onready var sundial_purchase_button: Button = $UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer/HBoxContainer/VBoxContainer/BuyButton
 
 func _ready() -> void:
-	update_ui()
-	click_button.pressed.connect(_on_click_pressed)
-	upgrade_button.pressed.connect(_on_upgrade_pressed)
-	upgrade_button1.pressed.connect(_on_upgrade_pressed1)
+	clock_button.pressed.connect(_on_clock_button_pressed)
+	sun_purchase_button.pressed.connect(_on_sun_purchase_button)
+	sundial_purchase_button.pressed.connect(_on_sundial_purchase_button)
+	_update_label()
 
-func _on_click_pressed() -> void:
-	score += points_per_click
-	update_ui()
+func _on_clock_button_pressed() -> void:
+	_flash_button()
+	total_time += click
+	_update_label()
 
-func _on_upgrade_pressed() -> void:
-	if score >= upgrade_cost:
-		score -= upgrade_cost
-		points_per_click += 1
-		# simple scaling cost
-		upgrade_cost = int(upgrade_cost * 1.5) + 1
-		update_ui()
-func _on_upgrade_pressed1() -> void:
-	if score >= upgrade_cost1:
-		score -= upgrade_cost1
-		points_per_click += 3
-		# simple scaling cost
-		upgrade_cost1 = int(upgrade_cost1 * 1.5) + 1
-		update_ui()
+func _on_sun_purchase_button() -> void:
+	var cost := _get_sun_upgrade_cost()
 
-func update_ui() -> void:
-	score_label.text = "Score: %d" % [score]
-	PerClickLabel.text = "Per Click: %d" %[points_per_click]
-	UpgradeCostLabel.text = "Upgrade Cost: %d" % [upgrade_cost]
-	UpgradeCostLabel1.text = "Upgrade Cost: %d" % [upgrade_cost1]
-	upgrade_button.disabled = score < upgrade_cost
-	upgrade_button1.disabled = score < upgrade_cost1
+	if total_time < cost:
+		return
+
+	total_time -= cost
+	click_sun_upgrade_level += 1
+
+	# increase click power
+	click += 1
+
+	_update_label()
+	
+func _on_sundial_purchase_button() -> void:
+	var cost := _get_sun_upgrade_cost()
+
+	if total_time < cost:
+		return
+
+	total_time -= cost
+	click_sun_upgrade_level += 1
+
+	# increase click power
+	click += 10
+
+	_update_label()
+
+func _get_sun_upgrade_cost() -> int:
+	var cost_f := float(CLICK_SUN_UPGRADE_BASE_COST) * pow(CLICK_SUN_UPGRADE_GROWTH, float(click_sun_upgrade_level))
+	return int(ceil(cost_f))
+
+func _flash_button() -> void:
+	clock_button.modulate = Color(1.5, 1.5, 1.5, 1.0)
+
+	var tween := create_tween()
+	tween.tween_property(
+		clock_button,
+		"modulate",
+		Color(1, 1, 1, 1),
+		0.12
+	)
+
+func _get_time_label(total_time: int) -> String:
+	if total_time < 60:
+		return "%d seconds" % total_time
+	
+	elif total_time < 60 * 60:
+		var minutes := float(total_time) / 60.0
+		return "%.2f minutes" % minutes
+	
+	else:
+		var hours := float(total_time) / 3600.0
+		return "%.2f hours" % hours
+
+func _update_label() -> void:
+	time_label.text = "Time: " + _get_time_label(total_time)
+	rate_label.text = "Rate: +%d second(s) per click" % click
+
+	var cost := _get_sun_upgrade_cost()
+	sun_title.text = "%s (Lvl %d)\nCost: %d seconds" % [
+		CLICK_SUN_UPGRADE,
+		click_sun_upgrade_level,
+		cost
+	]
+
+	sun_purchase_button.disabled = total_time < cost
+	

@@ -34,7 +34,7 @@ var click_sundial_upgrade_level: int = 0
 func _ready() -> void:
 	clock_button.pressed.connect(_on_clock_button_pressed)
 	sun_purchase_button.pressed.connect(_on_sun_purchase_button)
-	#sundial_purchase_button.pressed.connect(_on_sundial_purchase_button)
+	sundial_purchase_button.pressed.connect(_on_sundial_purchase_button)
 	_update_label()
 
 func _on_clock_button_pressed() -> void:
@@ -53,6 +53,20 @@ func _on_sun_purchase_button() -> void:
 
 	# increase click power
 	click += 1
+
+	_update_label()
+	
+func _on_sundial_purchase_button() -> void:
+	var cost := _get_sun_upgrade_cost()
+
+	if total_time < cost:
+		return
+
+	total_time -= cost
+	click_sun_upgrade_level += 1
+
+	# increase click power
+	click += 10
 
 	_update_label()
 

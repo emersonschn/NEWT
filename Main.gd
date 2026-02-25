@@ -86,17 +86,29 @@ func _flash_button() -> void:
 	)
 
 func _get_time_label(total_time: int) -> String:
-	if total_time < 60:
-		return "%d seconds" % total_time
+	var total_seconds := int(total_time)
 	
-	elif total_time < 60 * 60:
-		var minutes := float(total_time) / 60.0
-		return "%.2f minutes" % minutes
+	if total_seconds < 60:
+		return "%d seconds" % total_seconds
 	
-	else:
-		var hours := float(total_time) / 3600.0
-		return "%.2f hours" % hours
+	elif total_seconds < 60 * 60:
+		var minutes := total_seconds / 60 
+		var seconds := total_seconds % 60
 
+		return "%d minutes, %d seconds" % [minutes, seconds]
+	
+	elif total_seconds < 60 * 60 * 24:
+		var hours := total_seconds / 3600
+		var minutes := (total_seconds % 3600) / 60
+		var seconds := total_seconds % 60
+		return "%d hours, %d minutes, %d seconds" % [hours, minutes, seconds]
+
+	else :
+		var days := total_seconds / 86400
+		var hours := (total_seconds % 86400) / 3600
+		var minutes := (total_seconds % 3600) / 60
+		var seconds := total_seconds % 60
+		return "%d days, %d hours, %d minutes, %d seconds" % [days, hours, minutes, seconds]
 func _update_label() -> void:
 	time_label.text = "Time: " + _get_time_label(total_time)
 	rate_label.text = "Rate: +%d second(s) per click" % click

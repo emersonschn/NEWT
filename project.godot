@@ -10,10 +10,14 @@ config_version=5
 
 [application]
 
-config/name="simpleClicker"
-run/main_scene="uid://dku30sl8r48vp"
+config/name="NEWT"
+run/main_scene="uid://bgigqmdqhyrd2"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [physics]
 

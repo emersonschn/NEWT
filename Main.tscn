@@ -1,72 +1,201 @@
-[gd_scene format=3 uid="uid://dku30sl8r48vp"]
+[gd_scene format=3 uid="uid://bgigqmdqhyrd2"]
 
-[ext_resource type="Script" uid="uid://1mkxr5pspyqd" path="res://Main.gd" id="1_glv2v"]
+[ext_resource type="Texture2D" uid="uid://e3mutvj1uxyf" path="res://Resources/59-earth/textures/earth albedo.jpg" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://b5jdyvd3tli8b" path="res://main.gd" id="1_272bh"]
+[ext_resource type="Script" uid="uid://h58ml4cr7gsb" path="res://earth_mesh.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://chp82qypo00jk" path="res://Resources/59-earth/textures/clouds earth.png" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://bjcpptbud7ad0" path="res://cloud_mesh.gd" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://468olmnabn4v" path="res://Resources/space.jpg" id="5_lquwl"]
+[ext_resource type="BitMap" uid="uid://bn4e24xdy38c1" path="res://Resources/clock.png" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://c5qj02o0w66r4" path="res://Resources/clockIcon.png" id="7_5vw27"]
+[ext_resource type="Texture2D" uid="uid://b85v6lf8fd37j" path="res://Resources/sun.png" id="9_kek77"]
+[ext_resource type="Texture2D" uid="uid://dpvhlevrjrjh1" path="res://Resources/sundial.png" id="10_4c57u"]
 
-[node name="Control" type="Control" unique_id=389180202]
-layout_mode = 3
-anchors_preset = 15
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+albedo_texture = ExtResource("1_0xm2m")
+
+[sub_resource type="SphereMesh" id="SphereMesh_lquwl"]
+material = SubResource("StandardMaterial3D_1bvp3")
+radius = 1.5
+height = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mycd"]
+transparency = 1
+blend_mode = 1
+albedo_texture = ExtResource("2_h2yge")
+
+[sub_resource type="SphereMesh" id="SphereMesh_272bh"]
+material = SubResource("StandardMaterial3D_7mycd")
+radius = 1.51
+height = 3.1
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0xm2m"]
+viewport_path = NodePath("EarthViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vw27"]
+bg_color = Color(0.003921569, 0.003921569, 0.003921569, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4c57u"]
+bg_color = Color(0.6, 0.6, 0.6, 0.56078434)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0.59607846)
+
+[sub_resource type="Theme" id="Theme_efxa6"]
+
+[node name="Main" type="Node2D" unique_id=561149231]
+script = ExtResource("1_272bh")
+
+[node name="EarthViewport" type="SubViewport" parent="." unique_id=516887894]
+transparent_bg = true
+
+[node name="EarthWorld" type="Node3D" parent="EarthViewport" unique_id=910737689]
+
+[node name="Camera3D" type="Camera3D" parent="EarthViewport/EarthWorld" unique_id=518157677]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="EarthViewport/EarthWorld" unique_id=1155414229]
+
+[node name="EarthMesh" type="MeshInstance3D" parent="EarthViewport/EarthWorld" unique_id=437779242]
+mesh = SubResource("SphereMesh_lquwl")
+script = ExtResource("1_ig7tw")
+
+[node name="CloudMesh" type="MeshInstance3D" parent="EarthViewport/EarthWorld" unique_id=558113434]
+mesh = SubResource("SphereMesh_272bh")
+script = ExtResource("4_1bvp3")
+
+[node name="SpaceBackgroundSprite" type="Sprite2D" parent="." unique_id=919479911]
+position = Vector2(577.5, 324.5)
+scale = Vector2(0.5030435, 0.5369748)
+texture = ExtResource("5_lquwl")
+
+[node name="EarthSprite" type="Sprite2D" parent="." unique_id=1078891309]
+position = Vector2(101, 93.99999)
+scale = Vector2(0.386, 0.359)
+texture = SubResource("ViewportTexture_0xm2m")
+
+[node name="TimeCountLabel" type="Label" parent="." unique_id=1832511552]
+offset_left = 3.0
+offset_top = 212.0
+offset_right = 213.0
+offset_bottom = 235.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_5vw27")
+text = "Time:"
+
+[node name="TimePerSecLabel" type="Label" parent="." unique_id=443577305]
+offset_left = 5.0
+offset_top = 513.0
+offset_right = 204.0
+offset_bottom = 536.0
+text = "Rate: "
+
+[node name="ClockButton" type="TextureButton" parent="." unique_id=2033711801]
+custom_minimum_size = Vector2(100, 100)
+offset_left = -75.0
+offset_top = 283.0
+offset_right = 283.0
+offset_bottom = 539.0
+texture_normal = ExtResource("7_5vw27")
+texture_click_mask = ExtResource("6_7mycd")
+stretch_mode = 0
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2013125771]
+
+[node name="UpgradesPanel" type="PanelContainer" parent="UI" unique_id=727318822]
+custom_minimum_size = Vector2(320, 0)
+anchors_preset = 11
+anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
+offset_left = -320.0
+offset_top = 26.0
+offset_bottom = -1.0
+grow_horizontal = 0
 grow_vertical = 2
-script = ExtResource("1_glv2v")
 
-[node name="ScoreLabel" type="Label" parent="." unique_id=216497560]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 267.0
-offset_right = 155.0
-offset_bottom = 318.0
-text = "Score : 0"
+[node name="MarginContainer" type="MarginContainer" parent="UI/UpgradesPanel" unique_id=2005626254]
+layout_mode = 2
 
-[node name="ClickButton" type="Button" parent="." unique_id=629059334]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 295.0
-offset_right = 165.0
-offset_bottom = 374.0
-text = "CLICK!"
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/UpgradesPanel/MarginContainer" unique_id=392677342]
+layout_mode = 2
+horizontal_scroll_mode = 0
 
-[node name="UpgradeButton" type="Button" parent="." unique_id=921550882]
-layout_mode = 0
-offset_left = 422.0
-offset_top = 338.0
-offset_right = 598.0
-offset_bottom = 414.0
-text = "Upgrade (+1 per click)"
+[node name="UpgradesList" type="VBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer" unique_id=1712238317]
+layout_mode = 2
+alignment = 1
 
-[node name="UpgradeButton1" type="Button" parent="." unique_id=2131917735]
-layout_mode = 0
-offset_left = 421.0
-offset_top = 419.0
-offset_right = 602.0
-offset_bottom = 494.0
-text = "Upgrade (+3 per click)"
+[node name="SunUpgrade" type="PanelContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=203756130]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
 
-[node name="PerClickLabel" type="Label" parent="." unique_id=1622453654]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 374.0
-offset_right = 157.0
-offset_bottom = 419.0
-text = "Per click: "
+[node name="MarginContainer" type="MarginContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade" unique_id=669684656]
+layout_mode = 2
 
-[node name="UpgradeCostLabel" type="Label" parent="." unique_id=587303076]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.017
-offset_left = 608.0
-offset_top = 347.0
-offset_right = 734.416
-offset_bottom = 399.0
-text = "Upgrade Cost: "
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer" unique_id=1037993813]
+layout_mode = 2
+theme = SubResource("Theme_efxa6")
 
-[node name="UpgradeCostLabel1" type="Label" parent="." unique_id=573725851]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.017
-offset_left = 608.0
-offset_top = 439.0
-offset_right = 734.416
-offset_bottom = 488.0
-text = "Upgrade Cost: "
+[node name="SunIcon" type="Sprite2D" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer/HBoxContainer" unique_id=918200547]
+position = Vector2(29.2, 25.7)
+scale = Vector2(0.062109377, 0.05527344)
+texture = ExtResource("9_kek77")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer/HBoxContainer" unique_id=446564119]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=329566634]
+layout_mode = 2
+text = "                                    Sun observation Cost: "
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=62174708]
+layout_mode = 2
+text = "                                             Sun Observation"
+
+[node name="BuyButton" type="Button" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1813000399]
+layout_mode = 2
+text = "Purchase: +1second per click"
+
+[node name="SunDialUpgrade" type="PanelContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1537693638]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade" unique_id=70244253]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer" unique_id=1620606946]
+layout_mode = 2
+theme = SubResource("Theme_efxa6")
+
+[node name="SunDialIcon" type="Sprite2D" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer/HBoxContainer" unique_id=1500947925]
+position = Vector2(29.2, 25.7)
+scale = Vector2(0.062109377, 0.05527344)
+texture = ExtResource("10_4c57u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer/HBoxContainer" unique_id=14359486]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=345346518]
+layout_mode = 2
+text = "                                    Sun observation Cost: "
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1629999710]
+layout_mode = 2
+text = "                                             Sun Dial"
+
+[node name="BuyButton" type="Button" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1871095058]
+layout_mode = 2
+text = "Purchase: +10second per click"
+
+[node name="UpgradesPanelLabel" type="Label" parent="UI" unique_id=1233085286]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -196.0
+offset_right = -122.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Upgrades"

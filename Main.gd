@@ -25,14 +25,7 @@ var upgrade_ui := {}      # id -> { "title": Label, "button": Button }
 
 # this function initializes the start game
 func _ready() -> void:
-<<<<<<< Updated upstream
-	
-	total_time += GameManager.starting_bonus_time
-	click += GameManager.starting_bonus_click
-	
-=======
 
->>>>>>> Stashed changes
 	clock_button.pressed.connect(_on_clock_button_pressed)
 	earth_spinner.set_click_rate(click)
 	cloud_spinner.set_click_rate(click)
@@ -48,7 +41,7 @@ func _ready() -> void:
 	add_child(_effect_timer)
 	_effect_timer.timeout.connect(_clear_star_effect)
 
-<<<<<<< Updated upstream
+
 	_register_all_upgrades()
 	_create_upgrades()
 
@@ -88,7 +81,7 @@ func _register_all_upgrades() -> void:
 
 	_register_upgrade_ui("digitalclock", $UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer/Title,
 		$UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer/BuyButton)
-=======
+
 	# Bind each upgrade's UI
 	_register_upgrade_ui(
 		"sun",
@@ -301,7 +294,7 @@ func _clear_star_effect() -> void:
 func clear_star_bonus_label() -> void:
 	await get_tree().create_timer(8.0).timeout
 	star_bonus_label.text=""
->>>>>>> Stashed changes
+
 
 # this function is used for every upgrade
 func _register_upgrade_ui(id: String, title_node: Label, button_node: Button) -> void:
@@ -429,7 +422,6 @@ func _get_rate_label(value: int) -> String:
 	else:
 		return "(years)"
 
-<<<<<<< Updated upstream
 func _end_game() -> void:
 	
 	# stop clicking
@@ -445,12 +437,12 @@ func _end_game() -> void:
 
 	time_label.text = "You reached the end of time."
 	rate_label.text = "The universe rests."
-=======
+
 # this function hides and opens the uppgrades menu when the 
 # upgrades menu button is pressed
 func _on_upgrades_toggle_pressed() -> void:
 	upgrades_panel.visible = !upgrades_panel.visible
->>>>>>> Stashed changes
+
 
 # this function updates the UI
 func _update_ui() -> void:
@@ -474,8 +466,5 @@ func _update_ui() -> void:
 
 		button_node.disabled = total_time < cost
 	
-	if total_time >= GameManager.end_time:
-		GameManager.end_game(total_time, click, session_time)
-		
 func _process(delta: float) -> void:
 	session_time += delta

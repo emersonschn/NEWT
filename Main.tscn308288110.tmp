@@ -81,8 +81,8 @@ mesh = SubResource("SphereMesh_272bh")
 script = ExtResource("1_ig7tw")
 
 [node name="SpaceBackgroundSprite" type="Sprite2D" parent="." unique_id=919479911]
-position = Vector2(1091, 541)
-scale = Vector2(1.0173914, 1.0000001)
+position = Vector2(575.5, 326.5)
+scale = Vector2(0.5013043, 0.54033613)
 texture = ExtResource("5_lquwl")
 
 [node name="EarthSprite" type="Sprite2D" parent="." unique_id=1078891309]

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://1j4lbxrg5nwt"]
+
+[ext_resource type="Texture2D" uid="uid://beg2o4hue7xdl" path="res://Resources/starMystery.png" id="1_22467"]
+[ext_resource type="Script" uid="uid://dhim78kx6x3ta" path="res://Star.gd" id="1_gv6bu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gv6bu"]
+radius = 394.05838
+
+[node name="Star" type="Area2D" unique_id=1940049934]
+script = ExtResource("1_gv6bu")
+
+[node name="StarSprite" type="Sprite2D" parent="." unique_id=790492270]
+scale = Vector2(0.175, 0.175)
+texture = ExtResource("1_22467")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1184037498]
+shape = SubResource("CircleShape2D_gv6bu")

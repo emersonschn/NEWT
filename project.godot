@@ -32,6 +32,20 @@ window/stretch/aspect="expand"
 =======
 >>>>>>> parent of c07f4f5 (alphat.2/26)
 
+<<<<<<< Updated upstream
+[autoload]
+
+GameManager="*uid://c2bi4c1prhivg"
+=======
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=2
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+>>>>>>> Stashed changes
+
 [dotnet]
 
 project/assembly_name="simpleClicker"

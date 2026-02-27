@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://h58ml4cr7gsb" path="res://earth_spinner.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://chp82qypo00jk" path="res://Resources/59-earth/textures/clouds earth.png" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://468olmnabn4v" path="res://Resources/space.jpg" id="5_lquwl"]
-[ext_resource type="BitMap" path="res://Resources/clock.png" id="6_7mycd"]
+[ext_resource type="BitMap" uid="uid://bn4e24xdy38c1" path="res://Resources/clock.png" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://c5qj02o0w66r4" path="res://Resources/clockIcon.png" id="7_5vw27"]
 [ext_resource type="Texture2D" uid="uid://c5x2oqa0rxswa" path="res://Resources/obelisk.png" id="9_20pc6"]
 [ext_resource type="Texture2D" uid="uid://b85v6lf8fd37j" path="res://Resources/sun.png" id="9_kek77"]
@@ -75,8 +75,8 @@ mesh = SubResource("SphereMesh_272bh")
 script = ExtResource("1_ig7tw")
 
 [node name="SpaceBackgroundSprite" type="Sprite2D" parent="." unique_id=919479911]
-position = Vector2(577.5, 324.5)
-scale = Vector2(0.5030435, 0.5369748)
+position = Vector2(575.5, 326.5)
+scale = Vector2(0.5013043, 0.54033613)
 texture = ExtResource("5_lquwl")
 
 [node name="EarthSprite" type="Sprite2D" parent="." unique_id=1078891309]

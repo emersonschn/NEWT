@@ -14,12 +14,13 @@ config/name="NEWT"
 run/main_scene="uid://bgigqmdqhyrd2"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+"<<<<<<<Updatedupstream[autoload]GameManager"="*uid://c2bi4c1prhivg"
+"<<<<<<<Updatedupstream<<<<<<<Updatedupstream[autoload]GameManager"="*uid://c2bi4c1prhivg"
 
-<<<<<<< Updated upstream
 [autoload]
 
 GameManager="*uid://c2bi4c1prhivg"
-=======
+
 [display]
 
 window/size/viewport_width=1920
@@ -27,7 +28,6 @@ window/size/viewport_height=1080
 window/size/mode=2
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
->>>>>>> Stashed changes
 
 [dotnet]
 

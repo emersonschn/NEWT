@@ -82,8 +82,13 @@ script = ExtResource("1_ig7tw")
 
 [node name="SpaceBackgroundSprite" type="Sprite2D" parent="." unique_id=919479911]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 position = Vector2(575.5, 326.5)
 scale = Vector2(0.5013043, 0.54033613)
+=======
+position = Vector2(1084, 515.00006)
+scale = Vector2(0.99695647, 1.247899)
+>>>>>>> Stashed changes
 =======
 position = Vector2(1084, 515.00006)
 scale = Vector2(0.99695647, 1.247899)

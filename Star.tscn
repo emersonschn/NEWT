@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://1j4lbxrg5nwt"]
+[gd_scene format=3 uid="uid://drtkqsqx6t1li"]
 
 [ext_resource type="Texture2D" uid="uid://beg2o4hue7xdl" path="res://Resources/starMystery.png" id="1_22467"]
-[ext_resource type="Script" uid="uid://dhim78kx6x3ta" path="res://Star.gd" id="1_gv6bu"]
+[ext_resource type="Script" path="res://Star.gd" id="1_gv6bu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gv6bu"]
 radius = 394.05838

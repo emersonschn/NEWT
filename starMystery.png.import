@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beg2o4hue7xdl"
-path="res://.godot/imported/starMystery.png-cc04a08b0790ab5a57e61a8eec732cf2.ctex"
+uid="uid://b4jbehgfy4vl6"
+path="res://.godot/imported/starMystery.png-871de0a3e0cc8b307ef9b0a5bb13c835.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/starMystery.png"
-dest_files=["res://.godot/imported/starMystery.png-cc04a08b0790ab5a57e61a8eec732cf2.ctex"]
+source_file="res://starMystery.png"
+dest_files=["res://.godot/imported/starMystery.png-871de0a3e0cc8b307ef9b0a5bb13c835.ctex"]
 
 [params]
 

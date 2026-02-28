@@ -57,11 +57,8 @@ func _ready() -> void:
 	add_child(_effect_timer)
 	_effect_timer.timeout.connect(_clear_star_effect)
 
-
 	_register_all_upgrades()
 	_create_upgrades()
-	_register_all_autoclickers()
-	_create_autoclickers()
 
 	_update_ui()
 
@@ -108,10 +105,6 @@ func _register_all_upgrades() -> void:
 	_register_upgrade_ui("digitalclock", $UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer/Title,
 		$UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer/BuyButton)
 		
-	_update_ui()
-
-# this function registers all upgrades
-func _register_all_autoclickers() -> void:
 	_register_autoclicker_ui("sun", $AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/SunAutoclicker/MarginContainer/HBoxContainer/VBoxContainer/Title,
 		$AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/SunAutoclicker/MarginContainer/HBoxContainer/VBoxContainer/BuyButton)
 
@@ -144,7 +137,7 @@ func _register_all_autoclickers() -> void:
 
 	_register_autoclicker_ui("digitalclock", $AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer/Title,
 		$AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer/BuyButton)
-
+	
 	_update_ui()
 	
 # this function does stuff when the star is clicked
@@ -253,10 +246,7 @@ func _create_upgrades() -> void:
 	upgrades["pocketwatch"] = Upgrade.new("pocketwatch","Click Power +1 day",36439875,1.15,func(ctx): ctx["main"].click += 86400)
 	upgrades["modernclock"] = Upgrade.new("modernclock","Click Power +1 week",255079125,1.15,func(ctx): ctx["main"].click += 604800)
 	upgrades["digitalclock"] = Upgrade.new("digitalclock","Click Power +2.5 weeks",637697813,1.15,func(ctx): ctx["main"].click += 1512000)
-
-# this function makes every autoclicker
-func _create_autoclickers() -> void:
-
+	
 	autoclickers["sun"] = Autoclicker.new("sun","(1 second) per second",600,1.15,func(ctx): ctx["main"].auto_click += 1)
 	autoclickers["obelisk"] = Autoclicker.new("obelisk","(10 second) per second",35999,1.15,func(ctx): ctx["main"].auto_click += 10)
 	autoclickers["sundial"] = Autoclicker.new("sundial","(1 minute) per second",215944,1.15,func(ctx): ctx["main"].auto_click += 60)
@@ -318,50 +308,30 @@ func _flash_button() -> void:
 
 # this function updates TimeCountLabel
 func _get_time_label(total_time_int: int) -> String:
-	var total_seconds := total_time_int
-	var times: Array[String] = []
+	var total_seconds := int(total_time_int)
+	var times = []
 	
-	var years := total_seconds / 31557600
-	total_seconds %= 31557600
-
-	var months := total_seconds / 2629800
-	total_seconds %= 2629800
-
-	var weeks := total_seconds / 604800
-	total_seconds %= 604800
-
 	var days := total_seconds / 86400
-	total_seconds %= 86400
-
+	if days == 1:
+		times.append("1 Day")
+	elif days > 1:
+		times.append("%d Days" % days)
 	var hours := total_seconds / 3600
-	total_seconds %= 3600
-
-	var minutes := total_seconds / 60
+	if hours == 1:
+		times.append("1 Hour")
+	elif hours > 1:
+		times.append("%d Hours" % hours)
+	var minutes := (total_seconds % 3600) / 60
+	if minutes == 1:
+		times.append("1 Minute")
+	elif minutes > 1:
+		times.append("%d Minutes" % minutes)
 	var seconds := total_seconds % 60
-
-	# Add only non-zero values
-
-	if years > 0:
-		times.append("%d Year%s" % [years, "" if years == 1 else "s"])
-
-	if months > 0:
-		times.append("%d Month%s" % [months, "" if months == 1 else "s"])
-
-	if weeks > 0:
-		times.append("%d Week%s" % [weeks, "" if weeks == 1 else "s"])
-
-	if days > 0:
-		times.append("%d Day%s" % [days, "" if days == 1 else "s"])
-
-	if hours > 0:
-		times.append("%d Hour%s" % [hours, "" if hours == 1 else "s"])
-
-	if minutes > 0:
-		times.append("%d Minute%s" % [minutes, "" if minutes == 1 else "s"])
-
-	if seconds > 0 or times.is_empty():
-		times.append("%d Second%s" % [seconds, "" if seconds == 1 else "s"])
-
+	if seconds == 1:
+		times.append("1 Second")
+	elif seconds > 1:
+		times.append("%d Seconds" % seconds)
+	
 	return ", ".join(times)
 
 # this function updates the rate ratio
@@ -479,6 +449,10 @@ func _update_ui() -> void:
 		]
 
 		button_node.disabled = total_time < cost
-	
+		
+			
+	if total_time >= GameManager.end_time:
+		GameManager.end_game(total_time, click, session_time)
+		
 func _process(delta: float) -> void:
 	session_time += delta

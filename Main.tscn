@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b43rla8wjba36"]
 
 [ext_resource type="Texture2D" uid="uid://e3mutvj1uxyf" path="res://Resources/59-earth/textures/earth albedo.jpg" id="1_0xm2m"]
-[ext_resource type="Script" uid="uid://duao2kx6wmap6" path="res://main.gd" id="1_272bh"]
+[ext_resource type="Script" uid="uid://duao2kx6wmap6" path="res://Main.gd" id="1_272bh"]
 [ext_resource type="Script" uid="uid://h58ml4cr7gsb" path="res://earth_spinner.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://chp82qypo00jk" path="res://Resources/59-earth/textures/clouds earth.png" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://468olmnabn4v" path="res://Resources/space.jpg" id="5_lquwl"]

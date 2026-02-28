@@ -3,14 +3,16 @@ extends Node2D
 
 var total_time: float = 0.0
 var click: float = 1.0
-var end_time: = 3155760000
+var end_time := 3155760000
 var session_time: float = 0.0
 var upgrade_cost_multiplier: float = 1.0 # normal prices
 var autoclicker_cost_multiplier: float = 1.0 # normal prices
+var auto_click: float = 0.0
 
 @onready var time_label: Label = $TimeCountLabel
 @onready var clock_button: TextureButton = $ClockButton
-@onready var rate_label: Label = $TimePerSecLabel
+@onready var rate_label: Label = $ClickRateLabel
+@onready var autoclicker_label: Label = $AutoclickerRateLabel
 @onready var star_bonus_label: Label = $StarBonusLabel
 @onready var earth_spinner := $EarthViewport/EarthWorld/EarthMesh
 @onready var cloud_spinner := $EarthViewport/EarthWorld/CloudMesh
@@ -20,6 +22,7 @@ var autoclicker_cost_multiplier: float = 1.0 # normal prices
 @onready var upgrades_toggle: Button = $UpgradesUI/UpgradesMenuButton
 @onready var autoclickers_panel: Control = $AutoclickerUI/AutoclickersPanel
 @onready var autoclickers_toggle: Button = $AutoclickerUI/AutoclickersMenuButton
+@onready var auto_timer: Timer = $AutoclickerTimer
 
 var _active_star_effect: String = ""
 var _effect_timer: Timer
@@ -45,6 +48,7 @@ func _ready() -> void:
 	# make the autoclickers menu invisible on start
 	autoclickers_panel.visible = false
 	autoclickers_toggle.pressed.connect(_on_autoclickers_toggle_pressed)
+	auto_timer.timeout.connect(_on_auto_timer_timeout)
 	
 	# this for the star buff/nerf randomizer
 	randomize()
@@ -61,6 +65,14 @@ func _ready() -> void:
 
 	_update_ui()
 
+# this function is for the autoclickers timer
+func _on_auto_timer_timeout() -> void:
+	if auto_click <= 0.0:
+		return
+	total_time += auto_click
+	click_clock_sfx.play()
+	_update_ui()
+	
 # this function registers all upgrades
 func _register_all_upgrades() -> void:
 	_register_upgrade_ui("sun", $UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer/HBoxContainer/VBoxContainer/Title,
@@ -141,7 +153,7 @@ func apply_random_star_effect() -> void:
 	if _active_star_effect != "":
 		_clear_star_effect()
 
-	var roll := randi_range(2, 2)
+	var roll := randi_range(0, 5)
 
 	var increase : float = 0.0
 	match roll:
@@ -245,17 +257,17 @@ func _create_upgrades() -> void:
 # this function makes every autoclicker
 func _create_autoclickers() -> void:
 
-	autoclickers["sun"] = Autoclicker.new("sun","Click Power +1 seconds",60,1.15,func(ctx): ctx["main"].click += 1)
-	autoclickers["obelisk"] = Autoclicker.new("obelisk","Click Power +10 seconds",3599,1.15,func(ctx): ctx["main"].click += 10)
-	autoclickers["sundial"] = Autoclicker.new("sundial","Click Power +1 minute",21594,1.15,func(ctx): ctx["main"].click += 60)
-	autoclickers["waterclock"] = Autoclicker.new("waterclock","Click Power +10 minutes",215950,1.15,func(ctx): ctx["main"].click += 600)
-	autoclickers["candleclock"] = Autoclicker.new("candleclock","Click Power +30 minutes",647820,1.15,func(ctx): ctx["main"].click += 1800)
-	autoclickers["hourglass"] = Autoclicker.new("hourglass","Click Power +45 minutes",971730,1.15,func(ctx): ctx["main"].click += 2700)
-	autoclickers["mechanicalclock"] = Autoclicker.new("mechanicalclock","Click Power +1 hour",11457595,1.15,func(ctx): ctx["main"].click += 3600)
-	autoclickers["pendulumclock"] = Autoclicker.new("pendulumclock","Click Power +10 hours",14575950,1.15,func(ctx): ctx["main"].click += 36000)
-	autoclickers["pocketwatch"] = Autoclicker.new("pocketwatch","Click Power +1 day",36439875,1.15,func(ctx): ctx["main"].click += 86400)
-	autoclickers["modernclock"] = Autoclicker.new("modernclock","Click Power +1 week",255079125,1.15,func(ctx): ctx["main"].click += 604800)
-	autoclickers["digitalclock"] = Autoclicker.new("digitalclock","Click Power +2.5 weeks",637697813,1.15,func(ctx): ctx["main"].click += 1512000)
+	autoclickers["sun"] = Autoclicker.new("sun","(1 second) per second",600,1.15,func(ctx): ctx["main"].auto_click += 1)
+	autoclickers["obelisk"] = Autoclicker.new("obelisk","(10 second) per second",35999,1.15,func(ctx): ctx["main"].auto_click += 10)
+	autoclickers["sundial"] = Autoclicker.new("sundial","(1 minute) per second",215944,1.15,func(ctx): ctx["main"].auto_click += 60)
+	autoclickers["waterclock"] = Autoclicker.new("waterclock","(10 minutes) per second",2159500,1.15,func(ctx): ctx["main"].auto_click += 600)
+	autoclickers["candleclock"] = Autoclicker.new("candleclock","(30 minutes) per second",6478200,1.15,func(ctx): ctx["main"].auto_click += 1800)
+	autoclickers["hourglass"] = Autoclicker.new("hourglass","(45 minutes) per second",9717300,1.15,func(ctx): ctx["main"].auto_click += 2700)
+	autoclickers["mechanicalclock"] = Autoclicker.new("mechanicalclock","(1 hour) per second",114575955,1.15,func(ctx): ctx["main"].auto_click += 3600)
+	autoclickers["pendulumclock"] = Autoclicker.new("pendulumclock","(10 hours) per second",145759500,1.15,func(ctx): ctx["main"].auto_click += 36000)
+	autoclickers["pocketwatch"] = Autoclicker.new("pocketwatch","(1 day) per second",364398755,1.15,func(ctx): ctx["main"].auto_click += 86400)
+	autoclickers["modernclock"] = Autoclicker.new("modernclock","(1 week) per second",2550791255,1.15,func(ctx): ctx["main"].auto_click += 604800)
+	autoclickers["digitalclock"] = Autoclicker.new("digitalclock","(2.5 weeks) per second",6376978133,1.15,func(ctx): ctx["main"].auto_click += 1512000)
 	
 # this function handles every upgrade cost logic
 func _on_upgrade_buy_pressed(id: String) -> void:
@@ -279,7 +291,7 @@ func _on_autoclicker_buy_pressed(id: String) -> void:
 	var up: Autoclicker = autoclickers[id]
 	var before_click := click
 	
-	total_time = up.buy(total_time, {"main": self}, upgrade_cost_multiplier)
+	total_time = up.buy(total_time, {"main": self}, autoclicker_cost_multiplier)
 	
 	# If click increased, do the rewind burst then update speed
 	if click != before_click:
@@ -431,7 +443,8 @@ func _on_autoclickers_toggle_pressed() -> void:
 # this function updates the UI
 func _update_ui() -> void:
 	time_label.text = "Time: " + _get_time_label(int(total_time))
-	rate_label.text = "Rate: %.2f%s per click" % [_get_rate_ratio(int(click)), _get_rate_label(int(click))]
+	rate_label.text = "Click Rate: %.2f%s" % [_get_rate_ratio(int(click)), _get_rate_label(int(click))]
+	autoclicker_label.text = "Autoclicker Rate: %.2f%s" % [_get_rate_ratio(int(auto_click)), _get_rate_label(int(auto_click))]
 	
 	# Update every upgrade card using the same loop
 	for id in upgrades.keys():
@@ -440,6 +453,23 @@ func _update_ui() -> void:
 
 		var title_node: Label = upgrade_ui[id]["title"]
 		var button_node: Button = upgrade_ui[id]["button"]
+
+		title_node.text = "                %s (Lvl %d)\n   Cost: %.2f%s" % [
+			up.title,
+			up.level,
+			_get_rate_ratio(cost),
+			_get_rate_label(cost)
+		]
+		
+		button_node.disabled = total_time < cost
+		
+	# Update every autoclicker card using the same loop
+	for id in autoclickers.keys():
+		var up: Autoclicker = autoclickers[id]
+		var cost := up.get_cost(autoclicker_cost_multiplier)
+
+		var title_node: Label = autoclicker_ui[id]["title"]
+		var button_node: Button = autoclicker_ui[id]["button"]
 
 		title_node.text = "                %s (Lvl %d)\n   Cost: %.2f%s" % [
 			up.title,

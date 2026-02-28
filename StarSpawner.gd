@@ -38,7 +38,7 @@ func _on_timer_timeout() -> void:
 	add_child(star)
 
 	# random X across the screen
-	var w := get_viewport_rect().size.x
+	var w := random_star_x()
 	star.position = Vector2(randf_range(0.0, w), spawn_y)
 
 	# random fall speed
@@ -50,3 +50,8 @@ func _on_timer_timeout() -> void:
 		#pause spawns for 10 seconds when clicked
 		pause_spawning_for(10.0)
 		get_tree().call_group("game", "apply_random_star_effect"))
+
+func random_star_x() -> float:
+	var w := float(get_viewport_rect().size.x)
+	# spawn between 20% and 70% of the screen width
+	return randf_range(w * 0.20, w * 0.70)

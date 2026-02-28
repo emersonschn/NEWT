@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://caaveru44hjsc" path="res://Resources/modernclock.png" id="17_5tuhn"]
 [ext_resource type="AudioStream" uid="uid://f56as2dnnstg" path="res://Resources/soundEffects/background.mp3" id="19_devvj"]
 [ext_resource type="AudioStream" uid="uid://uc4utqfebvcm" path="res://Resources/soundEffects/clockTick.mp3" id="20_3b0ty"]
+[ext_resource type="Texture2D" uid="uid://d1yxtrw0boycd" path="res://Resources/autoclickersIcon.png" id="20_mxvw5"]
 [ext_resource type="AudioStream" uid="uid://bnmfr12nvx6hc" path="res://Resources/soundEffects/upgradePurchase.mp3" id="21_bg4s2"]
 [ext_resource type="Script" uid="uid://bj6exal2nkev5" path="res://StarSpawner.gd" id="23_bg4s2"]
 [ext_resource type="PackedScene" uid="uid://1j4lbxrg5nwt" path="res://Star.tscn" id="24_hhcpw"]
@@ -81,10 +82,8 @@ mesh = SubResource("SphereMesh_272bh")
 script = ExtResource("1_ig7tw")
 
 [node name="SpaceBackgroundSprite" type="Sprite2D" parent="." unique_id=919479911]
-position = Vector2(575.5, 326.5)
-scale = Vector2(0.5013043, 0.54033613)
-position = Vector2(575.5, 326.5)
-scale = Vector2(0.5013043, 0.54033613)
+position = Vector2(1091, 541)
+scale = Vector2(1.0173914, 1.0000001)
 texture = ExtResource("5_lquwl")
 
 [node name="EarthSprite" type="Sprite2D" parent="." unique_id=1078891309]
@@ -117,16 +116,16 @@ texture_normal = ExtResource("7_5vw27")
 texture_click_mask = ExtResource("6_7mycd")
 stretch_mode = 0
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=2013125771]
+[node name="UpgradesUI" type="CanvasLayer" parent="." unique_id=2013125771]
 
-[node name="UpgradesMenuButton" type="Button" parent="UI" unique_id=267838760]
+[node name="UpgradesMenuButton" type="Button" parent="UpgradesUI" unique_id=267838760]
 offset_left = 1894.0
 offset_top = 3.0
 offset_right = 2030.0
 offset_bottom = 139.0
 icon = ExtResource("8_3b0ty")
 
-[node name="UpgradesPanel" type="PanelContainer" parent="UI" unique_id=727318822]
+[node name="UpgradesPanel" type="PanelContainer" parent="UpgradesUI" unique_id=727318822]
 visible = false
 custom_minimum_size = Vector2(320, 0)
 anchors_preset = 11
@@ -140,360 +139,737 @@ offset_bottom = -52.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/UpgradesPanel" unique_id=2005626254]
+[node name="MarginContainer" type="MarginContainer" parent="UpgradesUI/UpgradesPanel" unique_id=2005626254]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/UpgradesPanel/MarginContainer" unique_id=392677342]
+[node name="ScrollContainer" type="ScrollContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer" unique_id=392677342]
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="UpgradesList" type="VBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer" unique_id=1712238317]
+[node name="UpgradesList" type="VBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer" unique_id=1712238317]
 layout_mode = 2
 alignment = 1
 
-[node name="SunUpgrade" type="PanelContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=203756130]
+[node name="SunUpgrade" type="PanelContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=203756130]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade" unique_id=669684656]
+[node name="MarginContainer" type="MarginContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade" unique_id=669684656]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer" unique_id=1037993813]
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer" unique_id=1037993813]
 layout_mode = 2
 theme = SubResource("Theme_efxa6")
 
-[node name="SunIcon" type="Sprite2D" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer/HBoxContainer" unique_id=918200547]
+[node name="SunIcon" type="Sprite2D" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer/HBoxContainer" unique_id=918200547]
 position = Vector2(29.2, 25.7)
 scale = Vector2(0.062109377, 0.05527344)
 texture = ExtResource("9_kek77")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer/HBoxContainer" unique_id=446564119]
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer/HBoxContainer" unique_id=446564119]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=329566634]
+[node name="Title" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=329566634]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Description" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=62174708]
+[node name="Description" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=62174708]
 layout_mode = 2
 text = "                                                 Sun Observation"
 
-[node name="BuyButton" type="Button" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1813000399]
+[node name="BuyButton" type="Button" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1813000399]
 layout_mode = 2
 text = "Purchase: +1second per click"
 
-[node name="ObeliskUpgrade" type="PanelContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1399556944]
+[node name="ObeliskUpgrade" type="PanelContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1399556944]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskUpgrade" unique_id=1636964589]
+[node name="MarginContainer" type="MarginContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskUpgrade" unique_id=1636964589]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskUpgrade/MarginContainer" unique_id=2084653621]
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskUpgrade/MarginContainer" unique_id=2084653621]
 layout_mode = 2
 theme = SubResource("Theme_efxa6")
 
-[node name="ObeliskIcon" type="Sprite2D" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskUpgrade/MarginContainer/HBoxContainer" unique_id=1424262115]
+[node name="ObeliskIcon" type="Sprite2D" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskUpgrade/MarginContainer/HBoxContainer" unique_id=1424262115]
 position = Vector2(29.2, 25.7)
 scale = Vector2(0.062109377, 0.05527344)
 texture = ExtResource("9_20pc6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskUpgrade/MarginContainer/HBoxContainer" unique_id=129844952]
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskUpgrade/MarginContainer/HBoxContainer" unique_id=129844952]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=753515901]
+[node name="Title" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=753515901]
 layout_mode = 2
 text = "                                    "
 horizontal_alignment = 1
 
-[node name="Description" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=813289463]
+[node name="Description" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=813289463]
 layout_mode = 2
 text = "                                                                  Obelisk"
 
-[node name="BuyButton" type="Button" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=562495320]
+[node name="BuyButton" type="Button" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=562495320]
 layout_mode = 2
 text = "Purchase: +10 seconds per click"
 
-[node name="SunDialUpgrade" type="PanelContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1537693638]
+[node name="SunDialUpgrade" type="PanelContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1537693638]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade" unique_id=70244253]
+[node name="MarginContainer" type="MarginContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade" unique_id=70244253]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer" unique_id=1620606946]
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer" unique_id=1620606946]
 layout_mode = 2
 theme = SubResource("Theme_efxa6")
 
-[node name="SunDialIcon" type="Sprite2D" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer/HBoxContainer" unique_id=1500947925]
+[node name="SunDialIcon" type="Sprite2D" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer/HBoxContainer" unique_id=1500947925]
 position = Vector2(29.2, 25.7)
 scale = Vector2(0.062109377, 0.05527344)
 texture = ExtResource("10_4c57u")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer/HBoxContainer" unique_id=14359486]
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer/HBoxContainer" unique_id=14359486]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=345346518]
+[node name="Title" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=345346518]
 layout_mode = 2
 text = "         "
 horizontal_alignment = 1
 
-[node name="Description" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1629999710]
+[node name="Description" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1629999710]
 layout_mode = 2
 text = "                                                                 Sun Dial"
 
-[node name="BuyButton" type="Button" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1871095058]
+[node name="BuyButton" type="Button" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1871095058]
 layout_mode = 2
 text = "Purchase: +45 seconds per click"
 
-[node name="WaterClockUpgrade" type="PanelContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1600010224]
+[node name="WaterClockUpgrade" type="PanelContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1600010224]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade" unique_id=1485857975]
+[node name="MarginContainer" type="MarginContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade" unique_id=1485857975]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade/MarginContainer" unique_id=1017355845]
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade/MarginContainer" unique_id=1017355845]
 layout_mode = 2
 theme = SubResource("Theme_efxa6")
 
-[node name="WaterClockIcon" type="Sprite2D" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade/MarginContainer/HBoxContainer" unique_id=1123555782]
+[node name="WaterClockIcon" type="Sprite2D" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade/MarginContainer/HBoxContainer" unique_id=1123555782]
 position = Vector2(29.2, 25.7)
 scale = Vector2(0.062109377, 0.05527344)
 texture = ExtResource("11_efxa6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade/MarginContainer/HBoxContainer" unique_id=1536128813]
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade/MarginContainer/HBoxContainer" unique_id=1536128813]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=549839508]
+[node name="Title" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=549839508]
 layout_mode = 2
 text = "                                    "
 horizontal_alignment = 1
 
-[node name="Description" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1595369372]
+[node name="Description" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1595369372]
 layout_mode = 2
 text = "                                                          Water Clock"
 
-[node name="BuyButton" type="Button" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=990429943]
+[node name="BuyButton" type="Button" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=990429943]
 layout_mode = 2
 text = "Purchase: +10 minutes per click"
 
-[node name="CandleClockUpgrade" type="PanelContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=83938906]
+[node name="CandleClockUpgrade" type="PanelContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=83938906]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockUpgrade" unique_id=868914127]
+[node name="MarginContainer" type="MarginContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockUpgrade" unique_id=868914127]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockUpgrade/MarginContainer" unique_id=902690214]
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockUpgrade/MarginContainer" unique_id=902690214]
 layout_mode = 2
 theme = SubResource("Theme_efxa6")
 
-[node name="CandleClockIcon" type="Sprite2D" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockUpgrade/MarginContainer/HBoxContainer" unique_id=2031036725]
+[node name="CandleClockIcon" type="Sprite2D" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockUpgrade/MarginContainer/HBoxContainer" unique_id=2031036725]
 position = Vector2(29.2, 25.7)
 scale = Vector2(0.062109377, 0.05527344)
 texture = ExtResource("12_fpfj3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockUpgrade/MarginContainer/HBoxContainer" unique_id=1406209876]
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockUpgrade/MarginContainer/HBoxContainer" unique_id=1406209876]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=995377814]
+[node name="Title" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=995377814]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Description" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1569804361]
+[node name="Description" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1569804361]
 layout_mode = 2
 text = "                                                        Candle Clock"
 
-[node name="BuyButton" type="Button" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=836563936]
+[node name="BuyButton" type="Button" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=836563936]
 layout_mode = 2
 text = "Purchase: +30 minutes per click"
 
-[node name="HourGlassUpgrade" type="PanelContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=151313592]
+[node name="HourGlassUpgrade" type="PanelContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=151313592]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassUpgrade" unique_id=592344581]
+[node name="MarginContainer" type="MarginContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassUpgrade" unique_id=592344581]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassUpgrade/MarginContainer" unique_id=137346415]
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassUpgrade/MarginContainer" unique_id=137346415]
 layout_mode = 2
 theme = SubResource("Theme_efxa6")
 
-[node name="HourGlassIcon" type="Sprite2D" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassUpgrade/MarginContainer/HBoxContainer" unique_id=14122421]
+[node name="HourGlassIcon" type="Sprite2D" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassUpgrade/MarginContainer/HBoxContainer" unique_id=14122421]
 position = Vector2(29.2, 25.7)
 scale = Vector2(0.062109377, 0.05527344)
 texture = ExtResource("13_sc1dx")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassUpgrade/MarginContainer/HBoxContainer" unique_id=38171157]
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassUpgrade/MarginContainer/HBoxContainer" unique_id=38171157]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1888976128]
+[node name="Title" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1888976128]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Description" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=19336499]
+[node name="Description" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=19336499]
 layout_mode = 2
 text = "                                                            Hour Glass"
 
-[node name="BuyButton" type="Button" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1876702979]
+[node name="BuyButton" type="Button" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1876702979]
 layout_mode = 2
 text = "Purchase: +45 minutes per click"
 
-[node name="MechanicalClockUpgrade" type="PanelContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=909707906]
+[node name="MechanicalClockUpgrade" type="PanelContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=909707906]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockUpgrade" unique_id=1570067768]
+[node name="MarginContainer" type="MarginContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockUpgrade" unique_id=1570067768]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockUpgrade/MarginContainer" unique_id=2010254604]
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockUpgrade/MarginContainer" unique_id=2010254604]
 layout_mode = 2
 theme = SubResource("Theme_efxa6")
 
-[node name="MechanicalClockIcon" type="Sprite2D" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockUpgrade/MarginContainer/HBoxContainer" unique_id=1788210652]
+[node name="MechanicalClockIcon" type="Sprite2D" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockUpgrade/MarginContainer/HBoxContainer" unique_id=1788210652]
 position = Vector2(29.2, 25.7)
 scale = Vector2(0.062109377, 0.05527344)
 texture = ExtResource("14_kjvhd")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockUpgrade/MarginContainer/HBoxContainer" unique_id=735269686]
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockUpgrade/MarginContainer/HBoxContainer" unique_id=735269686]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1407809817]
+[node name="Title" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1407809817]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Description" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1968232484]
+[node name="Description" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1968232484]
 layout_mode = 2
 text = "                                                Mechanical Clock"
 
-[node name="BuyButton" type="Button" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1450462404]
+[node name="BuyButton" type="Button" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1450462404]
 layout_mode = 2
 text = "Purchase: + 1 hour per click"
 
-[node name="PendulumClockUpgrade" type="PanelContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1201475517]
+[node name="PendulumClockUpgrade" type="PanelContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1201475517]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockUpgrade" unique_id=2010951331]
+[node name="MarginContainer" type="MarginContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockUpgrade" unique_id=2010951331]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockUpgrade/MarginContainer" unique_id=398790762]
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockUpgrade/MarginContainer" unique_id=398790762]
 layout_mode = 2
 theme = SubResource("Theme_efxa6")
 
-[node name="PendulumClockIcon" type="Sprite2D" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockUpgrade/MarginContainer/HBoxContainer" unique_id=874671976]
+[node name="PendulumClockIcon" type="Sprite2D" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockUpgrade/MarginContainer/HBoxContainer" unique_id=874671976]
 position = Vector2(20.84961, 27.8125)
 scale = Vector2(0.047167897, 0.038004555)
 texture = ExtResource("15_5tuhn")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockUpgrade/MarginContainer/HBoxContainer" unique_id=2135605591]
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockUpgrade/MarginContainer/HBoxContainer" unique_id=2135605591]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1899515638]
+[node name="Title" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1899515638]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Description" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1914061889]
+[node name="Description" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1914061889]
 layout_mode = 2
 text = "                                                  Pendulum Clock"
 
-[node name="BuyButton" type="Button" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1946318875]
+[node name="BuyButton" type="Button" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1946318875]
 layout_mode = 2
 text = "Purchase: +10 hours per click"
 
-[node name="PocketWatchUpgrade" type="PanelContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=966617902]
+[node name="PocketWatchUpgrade" type="PanelContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=966617902]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchUpgrade" unique_id=2074224295]
+[node name="MarginContainer" type="MarginContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchUpgrade" unique_id=2074224295]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchUpgrade/MarginContainer" unique_id=1747573066]
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchUpgrade/MarginContainer" unique_id=1747573066]
 layout_mode = 2
 theme = SubResource("Theme_efxa6")
 
-[node name="PocketWatchIcon" type="Sprite2D" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchUpgrade/MarginContainer/HBoxContainer" unique_id=1443975842]
+[node name="PocketWatchIcon" type="Sprite2D" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchUpgrade/MarginContainer/HBoxContainer" unique_id=1443975842]
 position = Vector2(25.200195, 26.125)
 scale = Vector2(0.05429684, 0.04671224)
 texture = ExtResource("16_kjvhd")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchUpgrade/MarginContainer/HBoxContainer" unique_id=1118761547]
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchUpgrade/MarginContainer/HBoxContainer" unique_id=1118761547]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=188304911]
+[node name="Title" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=188304911]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Description" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=163141571]
+[node name="Description" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=163141571]
 layout_mode = 2
 text = "                                                       Pocket Watch"
 
-[node name="BuyButton" type="Button" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1217059398]
+[node name="BuyButton" type="Button" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1217059398]
 layout_mode = 2
 text = "Purchase: +1 day per click"
 
-[node name="ModernClockUpgrade" type="PanelContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=832126204]
+[node name="ModernClockUpgrade" type="PanelContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=832126204]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockUpgrade" unique_id=77630532]
+[node name="MarginContainer" type="MarginContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockUpgrade" unique_id=77630532]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockUpgrade/MarginContainer" unique_id=669350552]
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockUpgrade/MarginContainer" unique_id=669350552]
 layout_mode = 2
 theme = SubResource("Theme_efxa6")
 
-[node name="ModernClockIcon" type="Sprite2D" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockUpgrade/MarginContainer/HBoxContainer" unique_id=102699282]
+[node name="ModernClockIcon" type="Sprite2D" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockUpgrade/MarginContainer/HBoxContainer" unique_id=102699282]
 position = Vector2(29.2, 25.7)
 scale = Vector2(0.062109377, 0.05527344)
 texture = ExtResource("17_5tuhn")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockUpgrade/MarginContainer/HBoxContainer" unique_id=829074608]
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockUpgrade/MarginContainer/HBoxContainer" unique_id=829074608]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1051785488]
+[node name="Title" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1051785488]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Description" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1451838222]
+[node name="Description" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1451838222]
 layout_mode = 2
 text = "                                                       Modern Clock"
 
-[node name="BuyButton" type="Button" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=56761592]
+[node name="BuyButton" type="Button" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=56761592]
 layout_mode = 2
 text = "Purchase: + 1 week per click"
 
-[node name="DigitalClockUpgrade" type="PanelContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1792602542]
+[node name="DigitalClockUpgrade" type="PanelContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1792602542]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockUpgrade" unique_id=178857189]
+[node name="MarginContainer" type="MarginContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockUpgrade" unique_id=178857189]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockUpgrade/MarginContainer" unique_id=952323755]
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockUpgrade/MarginContainer" unique_id=952323755]
 layout_mode = 2
 theme = SubResource("Theme_efxa6")
 
-[node name="DigitialClockIcon" type="Sprite2D" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockUpgrade/MarginContainer/HBoxContainer" unique_id=2030747201]
+[node name="DigitialClockIcon" type="Sprite2D" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockUpgrade/MarginContainer/HBoxContainer" unique_id=2030747201]
 position = Vector2(40.200195, 25.700195)
 scale = Vector2(0.062109377, 0.05527344)
 texture = ExtResource("16_2gh4u")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockUpgrade/MarginContainer/HBoxContainer" unique_id=125892518]
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockUpgrade/MarginContainer/HBoxContainer" unique_id=125892518]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1785235061]
+[node name="Title" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1785235061]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Description" type="Label" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=550219304]
+[node name="Description" type="Label" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=550219304]
 layout_mode = 2
 text = "                                                         Digital Clock"
 
-[node name="BuyButton" type="Button" parent="UI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=936876372]
+[node name="BuyButton" type="Button" parent="UpgradesUI/UpgradesPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockUpgrade/MarginContainer/HBoxContainer/VBoxContainer" unique_id=936876372]
 layout_mode = 2
 text = "Purchase: +2.5 weeks per click"
+
+[node name="AutoclickerUI" type="CanvasLayer" parent="." unique_id=1881856654]
+
+[node name="AutoclickersMenuButton" type="Button" parent="AutoclickerUI" unique_id=1689795183]
+offset_left = 1894.0
+offset_top = 144.0
+offset_right = 2030.0
+offset_bottom = 280.0
+icon = ExtResource("20_mxvw5")
+
+[node name="AutoclickersPanel" type="PanelContainer" parent="AutoclickerUI" unique_id=1495867173]
+custom_minimum_size = Vector2(320, 0)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -514.0
+offset_top = 11.0
+offset_right = -166.0
+offset_bottom = -52.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="AutoclickerUI/AutoclickersPanel" unique_id=1953056802]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer" unique_id=145355933]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="UpgradesList" type="VBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer" unique_id=150798258]
+layout_mode = 2
+alignment = 1
+
+[node name="SunAutoclicker" type="PanelContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=326559995]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
+
+[node name="MarginContainer" type="MarginContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/SunAutoclicker" unique_id=114347761]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/SunAutoclicker/MarginContainer" unique_id=470513888]
+layout_mode = 2
+theme = SubResource("Theme_efxa6")
+
+[node name="SunIcon" type="Sprite2D" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/SunAutoclicker/MarginContainer/HBoxContainer" unique_id=233787018]
+position = Vector2(29.2, 25.7)
+scale = Vector2(0.062109377, 0.05527344)
+texture = ExtResource("9_kek77")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/SunAutoclicker/MarginContainer/HBoxContainer" unique_id=1971040541]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/SunAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=35182687]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/SunAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1635522962]
+layout_mode = 2
+text = "                                                 Sun Observation"
+
+[node name="BuyButton" type="Button" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/SunAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=741896950]
+layout_mode = 2
+text = "Purchase auto clicker "
+
+[node name="ObeliskAutoclicker" type="PanelContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1546876877]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
+
+[node name="MarginContainer" type="MarginContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskAutoclicker" unique_id=1629885974]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskAutoclicker/MarginContainer" unique_id=1541565057]
+layout_mode = 2
+theme = SubResource("Theme_efxa6")
+
+[node name="ObeliskIcon" type="Sprite2D" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskAutoclicker/MarginContainer/HBoxContainer" unique_id=1364155597]
+position = Vector2(29.2, 25.7)
+scale = Vector2(0.062109377, 0.05527344)
+texture = ExtResource("9_20pc6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskAutoclicker/MarginContainer/HBoxContainer" unique_id=1161562508]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=684645851]
+layout_mode = 2
+text = "                                    "
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1065971744]
+layout_mode = 2
+text = "                                                                  Obelisk"
+
+[node name="BuyButton" type="Button" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/ObeliskAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=668867642]
+layout_mode = 2
+text = "Purchase auto clicker"
+
+[node name="SunDialAutoclicker" type="PanelContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=931977617]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
+
+[node name="MarginContainer" type="MarginContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialAutoclicker" unique_id=746047540]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialAutoclicker/MarginContainer" unique_id=1478795980]
+layout_mode = 2
+theme = SubResource("Theme_efxa6")
+
+[node name="SunDialIcon" type="Sprite2D" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialAutoclicker/MarginContainer/HBoxContainer" unique_id=988970867]
+position = Vector2(29.2, 25.7)
+scale = Vector2(0.062109377, 0.05527344)
+texture = ExtResource("10_4c57u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialAutoclicker/MarginContainer/HBoxContainer" unique_id=82489544]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1536065635]
+layout_mode = 2
+text = "         "
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1570384709]
+layout_mode = 2
+text = "                                                                 Sun Dial"
+
+[node name="BuyButton" type="Button" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/SunDialAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2101603787]
+layout_mode = 2
+text = "Purchase auto clicker"
+
+[node name="WaterClockAutoclicker" type="PanelContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1543854230]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
+
+[node name="MarginContainer" type="MarginContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockAutoclicker" unique_id=454064706]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockAutoclicker/MarginContainer" unique_id=1870568619]
+layout_mode = 2
+theme = SubResource("Theme_efxa6")
+
+[node name="WaterClockIcon" type="Sprite2D" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockAutoclicker/MarginContainer/HBoxContainer" unique_id=772469335]
+position = Vector2(29.2, 25.7)
+scale = Vector2(0.062109377, 0.05527344)
+texture = ExtResource("11_efxa6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockAutoclicker/MarginContainer/HBoxContainer" unique_id=1553806784]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1378620404]
+layout_mode = 2
+text = "                                    "
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1388920932]
+layout_mode = 2
+text = "                                                          Water Clock"
+
+[node name="BuyButton" type="Button" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/WaterClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1687948505]
+layout_mode = 2
+text = "Purchase auto clicker"
+
+[node name="CandleClockAutoclicker" type="PanelContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1618176547]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
+
+[node name="MarginContainer" type="MarginContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockAutoclicker" unique_id=1213376167]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockAutoclicker/MarginContainer" unique_id=910501696]
+layout_mode = 2
+theme = SubResource("Theme_efxa6")
+
+[node name="CandleClockIcon" type="Sprite2D" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockAutoclicker/MarginContainer/HBoxContainer" unique_id=1037906996]
+position = Vector2(29.2, 25.7)
+scale = Vector2(0.062109377, 0.05527344)
+texture = ExtResource("12_fpfj3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockAutoclicker/MarginContainer/HBoxContainer" unique_id=587996208]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=294743720]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=499304136]
+layout_mode = 2
+text = "                                                        Candle Clock"
+
+[node name="BuyButton" type="Button" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/CandleClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=960638345]
+layout_mode = 2
+text = "Purchase auto clicker"
+
+[node name="HourGlassAutoclicker" type="PanelContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1607322512]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
+
+[node name="MarginContainer" type="MarginContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassAutoclicker" unique_id=111207873]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassAutoclicker/MarginContainer" unique_id=1243161730]
+layout_mode = 2
+theme = SubResource("Theme_efxa6")
+
+[node name="HourGlassIcon" type="Sprite2D" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassAutoclicker/MarginContainer/HBoxContainer" unique_id=359183654]
+position = Vector2(29.2, 25.7)
+scale = Vector2(0.062109377, 0.05527344)
+texture = ExtResource("13_sc1dx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassAutoclicker/MarginContainer/HBoxContainer" unique_id=371656830]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1261358185]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1333227454]
+layout_mode = 2
+text = "                                                            Hour Glass"
+
+[node name="BuyButton" type="Button" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/HourGlassAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=976918491]
+layout_mode = 2
+text = "Purchase auto clicker"
+
+[node name="MechanicalClockAutoclicker" type="PanelContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1228816201]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
+
+[node name="MarginContainer" type="MarginContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockAutoclicker" unique_id=433952117]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockAutoclicker/MarginContainer" unique_id=1808869384]
+layout_mode = 2
+theme = SubResource("Theme_efxa6")
+
+[node name="MechanicalClockIcon" type="Sprite2D" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockAutoclicker/MarginContainer/HBoxContainer" unique_id=1515416054]
+position = Vector2(29.2, 25.7)
+scale = Vector2(0.062109377, 0.05527344)
+texture = ExtResource("14_kjvhd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockAutoclicker/MarginContainer/HBoxContainer" unique_id=1507209144]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1103837128]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=569343632]
+layout_mode = 2
+text = "                                                Mechanical Clock"
+
+[node name="BuyButton" type="Button" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/MechanicalClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=122201993]
+layout_mode = 2
+text = "Purchase auto clicker"
+
+[node name="PendulumClockAutoclicker" type="PanelContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1867369309]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
+
+[node name="MarginContainer" type="MarginContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockAutoclicker" unique_id=714668964]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockAutoclicker/MarginContainer" unique_id=1890261132]
+layout_mode = 2
+theme = SubResource("Theme_efxa6")
+
+[node name="PendulumClockIcon" type="Sprite2D" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockAutoclicker/MarginContainer/HBoxContainer" unique_id=1388142228]
+position = Vector2(20.84961, 27.8125)
+scale = Vector2(0.047167897, 0.038004555)
+texture = ExtResource("15_5tuhn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockAutoclicker/MarginContainer/HBoxContainer" unique_id=1059789061]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1562652397]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2070919482]
+layout_mode = 2
+text = "                                                  Pendulum Clock"
+
+[node name="BuyButton" type="Button" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/PendulumClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1630910004]
+layout_mode = 2
+text = "Purchase auto clicker"
+
+[node name="PocketWatchAutoclicker" type="PanelContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=1994782587]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
+
+[node name="MarginContainer" type="MarginContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchAutoclicker" unique_id=425803331]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchAutoclicker/MarginContainer" unique_id=1785034844]
+layout_mode = 2
+theme = SubResource("Theme_efxa6")
+
+[node name="PocketWatchIcon" type="Sprite2D" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchAutoclicker/MarginContainer/HBoxContainer" unique_id=1376400205]
+position = Vector2(25.200195, 26.125)
+scale = Vector2(0.05429684, 0.04671224)
+texture = ExtResource("16_kjvhd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchAutoclicker/MarginContainer/HBoxContainer" unique_id=619399932]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2052742730]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=9665054]
+layout_mode = 2
+text = "                                                       Pocket Watch"
+
+[node name="BuyButton" type="Button" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/PocketWatchAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=963610985]
+layout_mode = 2
+text = "Purchase auto clicker"
+
+[node name="ModernClockAutoclicker" type="PanelContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=466547889]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
+
+[node name="MarginContainer" type="MarginContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockAutoclicker" unique_id=750946486]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockAutoclicker/MarginContainer" unique_id=705646307]
+layout_mode = 2
+theme = SubResource("Theme_efxa6")
+
+[node name="ModernClockIcon" type="Sprite2D" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockAutoclicker/MarginContainer/HBoxContainer" unique_id=704363066]
+position = Vector2(29.2, 25.7)
+scale = Vector2(0.062109377, 0.05527344)
+texture = ExtResource("17_5tuhn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockAutoclicker/MarginContainer/HBoxContainer" unique_id=960554524]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=389830868]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1288834967]
+layout_mode = 2
+text = "                                                       Modern Clock"
+
+[node name="BuyButton" type="Button" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/ModernClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1422867858]
+layout_mode = 2
+text = "Purchase auto clicker"
+
+[node name="DigitalClockAutoclicker" type="PanelContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList" unique_id=2074318925]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
+
+[node name="MarginContainer" type="MarginContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockAutoclicker" unique_id=971474811]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockAutoclicker/MarginContainer" unique_id=808604423]
+layout_mode = 2
+theme = SubResource("Theme_efxa6")
+
+[node name="DigitialClockIcon" type="Sprite2D" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockAutoclicker/MarginContainer/HBoxContainer" unique_id=818265768]
+position = Vector2(40.200195, 25.700195)
+scale = Vector2(0.062109377, 0.05527344)
+texture = ExtResource("16_2gh4u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockAutoclicker/MarginContainer/HBoxContainer" unique_id=614903824]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=175143660]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=730749280]
+layout_mode = 2
+text = "                                                         Digital Clock"
+
+[node name="BuyButton" type="Button" parent="AutoclickerUI/AutoclickersPanel/MarginContainer/ScrollContainer/UpgradesList/DigitalClockAutoclicker/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1061230438]
+layout_mode = 2
+text = "Purchase auto clicker"
 
 [node name="Audio" type="Node" parent="." unique_id=708772941]
 
@@ -512,9 +888,10 @@ stream = ExtResource("21_bg4s2")
 [node name="StarSpawner" type="Node2D" parent="." unique_id=20521014]
 script = ExtResource("23_bg4s2")
 star_scene = ExtResource("24_hhcpw")
+spawn_chance = 0.5
 
 [node name="Timer" type="Timer" parent="StarSpawner" unique_id=121570748]
-wait_time = 25.0
+wait_time = 10.0
 autostart = true
 
 [node name="StarBonusLabel" type="Label" parent="." unique_id=1324430920]

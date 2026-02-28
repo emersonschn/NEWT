@@ -1,5 +1,5 @@
 # Upgrade.gd
-class_name Upgrade
+class_name Autoclicker
 extends RefCounted
 # (RefCounted is better than Node for pure data objects)
 
@@ -25,11 +25,11 @@ func get_cost(multiplier: float = 1.0) -> int:
 	return int(ceil(cost_f))
 
 # this function lets the user know if they have enough for
-# an upgrade
+# an autoclicker
 func can_buy(currency: float, multiplier: float = 1.0) -> bool:
 	return currency >= get_cost(multiplier)
 
-# this function buys an upgrade and scales cost and applies
+# this function buys an autoclicker and scales cost and applies
 # game functionality effect
 func buy(currency: float, ctx: Dictionary, multiplier: float = 1.0) -> float:
 	var cost := get_cost(multiplier)

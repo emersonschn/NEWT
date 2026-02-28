@@ -1,7 +1,6 @@
 # Upgrade.gd
 class_name Upgrade
 extends RefCounted
-# (RefCounted is better than Node for pure data objects)
 
 var id: String
 var title: String
@@ -20,19 +19,19 @@ func _init(_id: String, _title: String, _base_cost: int, _growth: float, _apply_
 
 # this function returns the cost for an upgrade
 func get_cost(multiplier: float = 1.0) -> int:
-	var cost_f := float(base_cost) * pow(growth, float(level))
-	cost_f *= multiplier
+	var cost_f := float(base_cost) * pow(growth, float(level)) * multiplier
 	return int(ceil(cost_f))
 
 # this function lets the user know if they have enough for
 # an upgrade
-func can_buy(currency: float, multiplier: float = 1.0) -> bool:
-	return currency >= get_cost(multiplier)
+func can_buy(currency: float) -> bool:
+	return currency >= get_cost()
 
 # this function buys an upgrade and scales cost and applies
 # game functionality effect
 func buy(currency: float, ctx: Dictionary, multiplier: float = 1.0) -> float:
 	var cost := get_cost(multiplier)
+
 	if currency < cost:
 		return currency
 

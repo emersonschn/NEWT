@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://bgigqmdqhyrd2"]
+[gd_scene format=3 uid="uid://b43rla8wjba36"]
 
 [ext_resource type="Texture2D" uid="uid://e3mutvj1uxyf" path="res://Resources/59-earth/textures/earth albedo.jpg" id="1_0xm2m"]
-[ext_resource type="Script" uid="uid://b5jdyvd3tli8b" path="res://Main.gd" id="1_272bh"]
+[ext_resource type="Script" uid="uid://duao2kx6wmap6" path="res://main.gd" id="1_272bh"]
 [ext_resource type="Script" uid="uid://h58ml4cr7gsb" path="res://earth_spinner.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://chp82qypo00jk" path="res://Resources/59-earth/textures/clouds earth.png" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://468olmnabn4v" path="res://Resources/space.jpg" id="5_lquwl"]
@@ -99,12 +99,18 @@ offset_bottom = 235.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_5vw27")
 text = "Time:"
 
-[node name="TimePerSecLabel" type="Label" parent="." unique_id=443577305]
+[node name="ClickRateLabel" type="Label" parent="." unique_id=443577305]
 offset_left = 5.0
 offset_top = 513.0
 offset_right = 204.0
 offset_bottom = 536.0
 text = "Rate: "
+
+[node name="AutoclickerRateLabel" type="Label" parent="." unique_id=473419576]
+offset_left = 7.0
+offset_top = 540.0
+offset_right = 209.0
+offset_bottom = 563.0
 
 [node name="ClockButton" type="TextureButton" parent="." unique_id=2033711801]
 custom_minimum_size = Vector2(100, 100)
@@ -119,9 +125,9 @@ stretch_mode = 0
 [node name="UpgradesUI" type="CanvasLayer" parent="." unique_id=2013125771]
 
 [node name="UpgradesMenuButton" type="Button" parent="UpgradesUI" unique_id=267838760]
-offset_left = 1894.0
+offset_left = 1925.0
 offset_top = 3.0
-offset_right = 2030.0
+offset_right = 2061.0
 offset_bottom = 139.0
 icon = ExtResource("8_3b0ty")
 
@@ -497,9 +503,9 @@ text = "Purchase: +2.5 weeks per click"
 [node name="AutoclickerUI" type="CanvasLayer" parent="." unique_id=1881856654]
 
 [node name="AutoclickersMenuButton" type="Button" parent="AutoclickerUI" unique_id=1689795183]
-offset_left = 1894.0
+offset_left = 1925.0
 offset_top = 144.0
-offset_right = 2030.0
+offset_right = 2061.0
 offset_bottom = 280.0
 icon = ExtResource("20_mxvw5")
 
@@ -895,7 +901,10 @@ wait_time = 10.0
 autostart = true
 
 [node name="StarBonusLabel" type="Label" parent="." unique_id=1324430920]
-offset_left = 5.0
-offset_top = 542.0
-offset_right = 206.0
-offset_bottom = 565.0
+offset_left = 8.0
+offset_top = 568.0
+offset_right = 209.0
+offset_bottom = 591.0
+
+[node name="AutoclickerTimer" type="Timer" parent="." unique_id=1119785969]
+autostart = true
